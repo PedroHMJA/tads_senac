@@ -1,0 +1,54 @@
+create table country(
+	idcountry serial primary key,
+	nome varchar(80)
+);
+
+create table state(
+	idstate serial primary  key,
+	nome varchar(80),
+	idcountry int,
+	foreign key(idcountry) references country(idcountry)
+);
+
+create table city(
+	idcity serial primary key,
+	nome varchar(80),
+	idstate int,
+	foreign key(idstate) references state(idstate)
+);
+
+INSERT INTO country(nome) VALUES
+('Brasil'),
+('Estados Unidos'),
+('Argentina'),
+('França'),
+('Alemanha'),
+('Japão'),
+('Canadá'),
+('Reino Unido'),
+('Itália'),
+('México');
+
+INSERT INTO state (nome, idcountry) VALUES
+('São Paulo', 1),   -- Brasil
+('California', 2),  -- Estados Unidos
+('Buenos Aires', 3), -- Argentina
+('Île-de-France', 4), -- França
+('Baviera', 5),     -- Alemanha
+('Tóquio', 6),      -- Japão
+('Ontário', 7),     -- Canadá
+('Inglaterra', 8),  -- Reino Unido
+('Lazio', 9),       -- Itália
+('Chihuahua', 10);  -- México
+
+INSERT INTO city (nome, idstate) VALUES
+('São Paulo', 1),     -- São Paulo (Brasil)
+('Los Angeles', 2),   -- California (Estados Unidos)
+('Córdoba', 3),       -- Buenos Aires (Argentina)
+('Paris', 4),         -- Île-de-France (França)
+('Munique', 5),       -- Baviera (Alemanha)
+('Tóquio', 6),        -- Tóquio (Japão)
+('Toronto', 7),       -- Ontário (Canadá)
+('Londres', 8),       -- Inglaterra (Reino Unido)
+('Roma', 9),          -- Lazio (Itália)
+('Chihuahua', 10);    -- Chihuahua (México)
