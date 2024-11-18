@@ -7,4 +7,4 @@
 - Java Awt e Swing para a interface.
 - PostgreSQL para o banco de dados.
 # Clone o repositório
-git clone https://github.com/usuario/meu-projeto.git
+git clone https://github.com/PedroHMJA/tads_senac
