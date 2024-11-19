@@ -1,15 +1,13 @@
 
 package control;
 
-import modelo.City;
-import dao.CityDAO;
-import view.CityView;
+import modelo.State;
+import dao.StateDAO;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import view.StateView;
 
 /**
  *
@@ -17,52 +15,52 @@ import java.util.logging.Logger;
  */
 public class StateController {
 
-    private CityView view;
-    private CityDAO dao;
+    private StateView view;
+    private StateDAO dao;
 
-    public StateController(CityView view) {
+    public StateController(StateView view) {
         this.view = view;
-        this.dao = new CityDAO();
+        this.dao = new StateDAO();
         this.view.addSalvarListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    salvarCity();
+                    salvarState();
                 } catch (SQLException ex) {
                     System.out.println(ex.getMessage());
                 }
-                listarCities(); //atualizado em 28/10
+                listarStates(); //atualizado em 28/10
             }
         });
         this.view.addListarListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                listarCities();
+                listarStates();
             }
 
         });
         this.view.addDeletarListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                deletarCity();
-                listarCities();
+                deletarState();
+                listarStates();
             }
         });
     }
 
-    public void salvarCity() throws SQLException {
-        City city = new City(view.getNome());
-        dao.salvarCity(city); //atualizado em 28/10
-        view.exibirMensagem("Cidade " + city.getNome() + " salvo com sucesso!");
+    public void salvarState() throws SQLException {
+        State state = new State(view.getNome());
+        dao.salvarState(state); //atualizado em 28/10
+        view.exibirMensagem("Estado " + state.getNome() + " salvo com sucesso!");
     }
 
-    public void listarCities() {
-        List<City> cities = dao.listarCities();
-        view.atualizarTabela(cities);
+    public void listarStates() {
+        List<State> states = dao.listarState();
+        view.atualizarTabela(states);
     }
 
-    public void deletarCity() {
-        dao.deletarCity();
+    public void deletarState() {
+        dao.deletarState();
     }
 
 }
