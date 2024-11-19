@@ -12,6 +12,9 @@ public class State {
     private int id;
     private String nome;
 
+    public State() {
+    }
+
     public State(String nome) {
         this.nome = nome;
     }
