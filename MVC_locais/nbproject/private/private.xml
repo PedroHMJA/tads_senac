@@ -4,7 +4,11 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group name="Analise_de_projetos">
             <file>file:/C:/Users/Pedro/Documents/tads_senac/MVC_locais/src/main/Main.java</file>
-            <file>file:/C:/Users/Pedro/Documents/tads_senac/MVC_locais/src/dao/CityDAO.java</file>
+            <file>file:/C:/Users/Pedro/Documents/tads_senac/MVC_locais/src/control/StateController.java</file>
+            <file>file:/C:/Users/Pedro/Documents/tads_senac/MVC_locais/src/dao/DBConnection.java</file>
+            <file>file:/C:/Users/Pedro/Documents/tads_senac/MVC_locais/src/view/CityView.java</file>
+            <file>file:/C:/Users/Pedro/Documents/tads_senac/MVC_locais/src/control/CityController.java</file>
+            <file>file:/C:/Users/Pedro/Documents/tads_senac/MVC_locais/src/view/StateView.java</file>
         </group>
     </open-files>
 </project-private>

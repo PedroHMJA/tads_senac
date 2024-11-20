@@ -1,4 +1,3 @@
-
 package control;
 
 import modelo.State;
@@ -46,6 +45,17 @@ public class StateController {
                 listarStates();
             }
         });
+        this.view.addAtualizarListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    atualizarState();
+                    listarStates();
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
+            }
+        });
     }
 
     public void salvarState() throws SQLException {
@@ -63,6 +73,12 @@ public class StateController {
         dao.deletarState();
     }
 
+    public void atualizarState() throws SQLException{
+        State state = new State();
+        state.setNome(view.getNome());
+        state.setId(view.getId());
+        dao.atualizaState(state);
+        view.exibirMensagem("Estado atualizado com sucesso");
+    }
+
 }
-
-
