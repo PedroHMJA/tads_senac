@@ -19,11 +19,11 @@ public class CityDAO {
     public void salvarCity(City city) throws SQLException {
         String sql = "INSERT INTO city(nome) VALUES(?)";
 
-        try (Connection conexao = DBConnection.getConnection(); PreparedStatement stmt = conexao.prepareStatement(sql)) {
-            stmt.setString(1, city.getNome());
+        try (Connection conexao = DBConnection.getConnection(); PreparedStatement pstmt = conexao.prepareStatement(sql)) {
+            pstmt.setString(1, city.getNome());
 
-            stmt.executeUpdate();
-            stmt.close();
+            pstmt.executeUpdate();
+            pstmt.close();
             conexao.close();
 
         } catch (SQLException e) {
@@ -64,6 +64,21 @@ public class CityDAO {
             pstmt.close();
             connection.close();
 
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void atualizarCity(City city) {
+        String sql = "UPDATE city SET nome=? WHERE idcity=?";
+        try (Connection conexao = DBConnection.getConnection(); PreparedStatement pstmt = conexao.prepareStatement(sql)) {
+            pstmt.setString(1, city.getNome());
+            pstmt.setInt(2, city.getId());
+            
+            pstmt.executeUpdate();
+            pstmt.close();
+            conexao.close();
+            
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }

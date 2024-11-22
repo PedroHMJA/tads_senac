@@ -11,8 +11,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -51,6 +49,17 @@ public class CityController {
                 listarCities();
             }
         });
+        this.view.addAtualizarListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    atualizarCity();
+                    listarCities();
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
+            }
+        });
     }
 
     public void salvarCity() throws SQLException {
@@ -66,6 +75,14 @@ public class CityController {
 
     public void deletarCity() {
         dao.deletarCity();
+    }
+
+    public void atualizarCity() throws SQLException {
+        City city = new City(view.getNome());
+        city.setId(view.getId());
+        dao.atualizarCity(city);
+        view.exibirMensagem("Cidade atualizada com sucesso!");
+
     }
 
 }

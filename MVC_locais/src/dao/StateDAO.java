@@ -49,27 +49,42 @@ public class StateDAO {
     }
 
     public List<State> listarState() {
-        
+
         String sql = "SELECT * FROM state";
-        
+
         try (Connection conexao = DBConnection.getConnection(); PreparedStatement stmt = conexao.prepareStatement(sql); ResultSet rs = stmt.executeQuery()) {
-            
+
             List<State> states = new ArrayList();
-            
+
             while (rs.next()) {
                 State state = new State();
                 state.setId(rs.getInt("idstate"));
                 state.setNome(rs.getString("nome"));
                 states.add(state);
             }
-            
+
             stmt.close();
             conexao.close();
             return states;
-            
+
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             return Collections.emptyList();
+        }
+    }
+
+    public void atualizaState(State state) {
+        String sql = "UPDATE state SET nome=? WHERE idstate=?";
+        try (Connection conexao = DBConnection.getConnection(); PreparedStatement pstmt = conexao.prepareStatement(sql)) {
+            pstmt.setString(1, state.getNome());
+            pstmt.setInt(2, state.getId());
+
+            pstmt.executeUpdate();
+            pstmt.close();
+            conexao.close();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
         }
     }
 }

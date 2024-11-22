@@ -1,13 +1,6 @@
-create table country(
-	idcountry serial primary key,
-	nome varchar(80)
-);
-
 create table state(
 	idstate serial primary  key,
-	nome varchar(80),
-	idcountry int,
-	foreign key(idcountry) references country(idcountry)
+	nome varchar(80)
 );
 
 create table city(
@@ -17,29 +10,17 @@ create table city(
 	foreign key(idstate) references state(idstate)
 );
 
-INSERT INTO country(nome) VALUES
-('Brasil'),
-('Estados Unidos'),
-('Argentina'),
-('França'),
-('Alemanha'),
-('Japão'),
-('Canadá'),
-('Reino Unido'),
-('Itália'),
-('México');
-
-INSERT INTO state (nome, idcountry) VALUES
-('São Paulo', 1),   -- Brasil
-('California', 2),  -- Estados Unidos
-('Buenos Aires', 3), -- Argentina
-('Île-de-France', 4), -- França
-('Baviera', 5),     -- Alemanha
-('Tóquio', 6),      -- Japão
-('Ontário', 7),     -- Canadá
-('Inglaterra', 8),  -- Reino Unido
-('Lazio', 9),       -- Itália
-('Chihuahua', 10);  -- México
+INSERT INTO state (nome) VALUES
+('São Paulo'),   -- Brasil
+('California'),  -- Estados Unidos
+('Buenos Aires'), -- Argentina
+('Île-de-France'), -- França
+('Baviera'),     -- Alemanha
+('Tóquio'),      -- Japão
+('Ontário'),     -- Canadá
+('Inglaterra'),  -- Reino Unido
+('Lazio'),       -- Itália
+('Chihuahua');  -- México
 
 INSERT INTO city (nome, idstate) VALUES
 ('São Paulo', 1),     -- São Paulo (Brasil)
