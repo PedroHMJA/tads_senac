@@ -1,4 +1,4 @@
-# Aprendendo a mexer aqui.
+# Arquitetura MVC.
 ### Neste repositótio refiz uma atividade da faculdade que envolve:
 - Arquitetura MVC
 - CRUD simples.
